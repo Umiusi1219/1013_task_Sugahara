@@ -15,10 +15,6 @@ public:
 
     ~Array();
 
-    void Create(int num)
-    {
-        array = new int[num];
-    };
 
     void Set_array(int num0, int num1)
     {
@@ -30,39 +26,41 @@ public:
         return array[num];
     };
 
-private:
 
+    int Get_arraySize()
+    {
+        return arraySize;
+    };
+
+private:
     int* array = nullptr;
+    int arraySize;
 };
 
 Array::Array(int num)
 {
-    //array = new int[num];
-}
+    array = new int[num];
+
+    arraySize = num;
+};
 
 Array::~Array()
 {
     delete[] array;
     array = nullptr;
-}
+};
 
 
 int main()
 {
     Array array(1000);
 
-    array.Create(1000);
 
-    for (int i = 0; i < 1000; ++i)
+    for (int i = 0; i < array.Get_arraySize(); ++i)
     {
         array.Set_array(i, i);
-    }
 
-    for (int i = 0; i < 1000; ++i)
-    {
         printf("num = %d\n", array.Get_array(i));
     }
 
-    printf("num = %d\n", array.Get_array(-1));
-    printf("num = %d\n", array.Get_array(1000));
 }

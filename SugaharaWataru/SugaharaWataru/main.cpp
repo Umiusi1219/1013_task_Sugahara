@@ -18,12 +18,27 @@ public:
 
     void Set_array(int num0, int num1)
     {
-        array[num0] = num1;
+        if (0<=num0 && num0 < arraySize)
+        {
+            array[num0] = num1;
+        }
+        else
+        {
+            printf("配列外参照です\n");
+        }
     };
 
     int Get_array(int num)
     {
-        return array[num];
+        if (0 <= num && num < arraySize)
+        {
+            return array[num];
+        }
+        else
+        {
+            printf("配列外参照です\n");
+            return 0;
+        }
     };
 
 
@@ -56,7 +71,7 @@ int main()
     Array array(1000);
 
 
-    for (int i = 0; i < array.Get_arraySize(); ++i)
+    for (int i = 0; i < 1001; ++i)
     {
         array.Set_array(i, i);
 
